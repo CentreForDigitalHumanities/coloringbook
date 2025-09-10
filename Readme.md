@@ -1,5 +1,7 @@
 # Coloring Book
 
+[![DOI](https://zenodo.org/badge/20719075.svg)](https://doi.org/10.5281/zenodo.17091965)
+
 A web-based coloring book survey application
 by the Research Software Lab of the Centre for Digital Humanities at Utrecht University
 
@@ -11,11 +13,9 @@ by the Research Software Lab of the Centre for Digital Humanities at Utrecht Uni
 
 **IP and license:** The intellectual property of the ColoringBook method belongs to Utrecht University. This software is intended for research purposes. For the license details see below.
 
-
 ## Why does it exist?
 
 The software allows researchers to test how subjects interpret language (words and sentences), in a playful manner without revealing the intent of the study. Moreover, it is a natural task for subjects that doesn't make them *feel* like they are being tested. It is designed to work well on tablet devices, in order to accomodate for very young subjects.
-
 
 ## What does it do?
 
@@ -26,7 +26,6 @@ Each coloring page is presented with a coloring instruction sentence (as a writt
 On the server side, all coloring data are collected in a table that can be filtered by survey, page, area and subject. Each individual fill action is recorded with the color and the exact elapsed time since the drawing appeared on screen. Researchers can also define expected results for each page and compare the data with their expectations. Tables can be exported to CSV for further processing in any spreadsheet or statistics software.
 
 Researchers can compose their own surveys with custom images and sounds. The surveys are made available to test subjects through a fixed URL.
-
 
 ## How do I deploy and run the application?
 
@@ -58,7 +57,6 @@ The setting `CONFIG_FILE` should refer to the name of a configuration file (e.g.
 
 With both configuration files present, run either `docker compose --profile dev up --build` (development mode) or `docker compose --profile prod up --build` (production mode) in the same location as `docker-compose.yml`. This will start the following containers.
 
-
 | Name     | Description                                                                                  |
 |----------|----------------------------------------------------------------------------------------------|
 | `app`    | The Coloring Book (Flask) web application proper, with a Gunicorn server in production mode. |
@@ -78,7 +76,6 @@ The application does not take care of authentication or authorization. You shoul
 
 By default, the application will run on `localhost:3000`, but this is customisable in the `docker-compose` file.
 
-
 ## Development
 
 An overview of the database layout is given in `Database.svg`. For the complete specification, refer to `coloringbook/models.py`. Anything in `admin` subfolders is specific to the admin interface. Everything else in the `coloringbook` package is involved in delivering surveys to subjects and receiving data from them. Run `python test.py` for doctest-based testing. Motivations are documented throughout the code in comments; with some referencing to documentation for Flask, SQLAlchemy and jQuery, you should be able to find your way.
@@ -86,7 +83,6 @@ An overview of the database layout is given in `Database.svg`. For the complete 
 ## Server maintenance
 
 Once deployed, you may need to support users and restore missing data. How to do this is described in detail in the adjacent [ServerAdmin.md](ServerAdmin.md).
-
 
 ## License
 

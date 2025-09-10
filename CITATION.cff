@@ -1,0 +1,41 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: coloringbook
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - name: >-
+      Research Software Lab, Centre for Digital Humanities,
+      Utrecht University
+    website: >-
+      https://cdh.uu.nl/centre-for-digital-humanities/research-software-lab/
+    city: Utrecht
+    country: NL
+  - given-names: Manuela
+    family-names: Pinto
+    orcid: 'https://orcid.org/0000-0003-1893-1797'
+    affiliation: Utrecht University
+  - given-names: Shalom
+    family-names: Zuckerman
+    affiliation: Utrecht University
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17091965
+repository-code: 'https://github.com/CentreForDigitalHumanities/coloringbook'
+url: 'https://coloringbook.hum.uu.nl'
+abstract: A web-based coloring book survey application
+keywords:
+ - Language comprehension
+ - Grammatical development
+ - Vocabulary assessment
+ - Ecological validity
+ - Task-related effects
+ - Processing
+license: EUPL-1.2
+commit: ce3162e5e1b5894fe68540804066fffc3db17dbb
+version: 2.4.1
+date-released: '2025-09-10'
