@@ -42,8 +42,8 @@ services:
       <<: *app-env
       DEVELOPMENT: 1
     command: >
-      bash -c "python manage.py -A -c ${CONFIG_FILE} db upgrade
-      && python manage.py -c ${CONFIG_FILE} runserver --host 0.0.0.0 -dr"
+      bash -c "python2.7 manage.py -A -c ${CONFIG_FILE} db upgrade
+      && python2.7 manage.py -c ${CONFIG_FILE} runserver --host 0.0.0.0 -dr"
 
   db:
     image: mysql:5.7
