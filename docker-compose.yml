@@ -20,7 +20,7 @@ services:
       db:
         condition: service_healthy
     command: >
-      bash -c "python manage.py -A -c ${CONFIG_FILE} db upgrade
+      bash -c "python2.7 manage.py -A -c ${CONFIG_FILE} db upgrade
       && gunicorn -b 0.0.0.0:5000 'coloringbook:prod_app'
       --capture-output
       --access-logfile '/logs/gunicorn-access.log'
