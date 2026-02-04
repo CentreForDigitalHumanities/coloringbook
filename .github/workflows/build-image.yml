@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     push:
         branches:
-            # This should be removed when this is ready for review.
+            # This should be deleted when this is ready for review.
             - feature/build-image-in-workflow
             - main
         # This is used to run on releases (which are git tags under the hood)
