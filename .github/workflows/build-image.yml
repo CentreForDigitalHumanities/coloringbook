@@ -13,7 +13,8 @@ on:
         paths-ignore:
             - "README.md"
             - ".venv/**"
-            - ".github/workflows/**"
+            # Uncomment when ready for review.
+            # - ".github/workflows/**"
     # For CI
     pull_request:
         branches:
