@@ -41,7 +41,7 @@ jobs:
             - name: Tag and push images
               env:
                 REGISTRY: ghcr.io/centrefordigitalhumanities
-                SERVICES: "cb-app-prod cb-worker-prod db redis"
+                SERVICES: "cb-app-prod cb-worker-prod"
                 APP_NAME: "coloringbook-app"
               run: |
                   for SERVICE in $SERVICES; do
