@@ -40,7 +40,7 @@ jobs:
 
             - name: Tag and push images
               env:
-                REGISTRY: ghcr.io/CentreForDigitalHumanities
+                REGISTRY: ghcr.io/centrefordigitalhumanities
                 SERVICES: "cb-app-prod cb-worker-prod db redis"
                 APP_NAME: "coloringbook-app"
               run: |
