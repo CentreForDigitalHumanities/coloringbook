@@ -1,5 +1,13 @@
 # Coloring Book -- version history #
 
+## 2.4.2 ##
+
+  * New Docker base image. No functional changes.
+
+## 2.4.1 ##
+
+  * Code repository moved to new organisation.
+
 ## 2.4 ##
 
   * Allows users to enter multiple email addresses for survey data notifications.
