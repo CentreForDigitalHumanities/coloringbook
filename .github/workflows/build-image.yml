@@ -1,0 +1,68 @@
+name: Build and Push Docker Images
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            # This should be deleted when this is ready for review.
+            - feature/build-image-in-workflow
+            - main
+        # This is used to run on releases (which are git tags under the hood)
+        tags:
+            - "*"
+        paths-ignore:
+            - "README.md"
+            - ".venv/**"
+            # Uncomment when ready for review.
+            # - ".github/workflows/**"
+    # For CI
+    pull_request:
+        branches:
+            - "main"
+permissions:
+    contents: write
+    packages: write
+jobs:
+    build-push:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Login to GitHub Container Registry
+              uses: docker/login-action@v3 # this action does it securely rather than using docker login -u <user> -p <pass/token>
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Build Docker Compose Images (prod profile)
+              run: |
+                  docker compose --profile prod build
+
+            - name: Tag and push images
+              env:
+                REGISTRY: ghcr.io/centrefordigitalhumanities
+                SERVICES: "cb-app-prod cb-worker-prod"
+                APP_NAME: "coloringbook-app"
+              run: |
+                  for SERVICE in $SERVICES; do
+                  IMAGE_NAME="$REGISTRY/$APP_NAME:$SERVICE-${{ github.sha }}"
+                  echo "Tagging and pushing $SERVICE as $IMAGE_NAME"
+                  docker tag $SERVICE $IMAGE_NAME
+                  docker push $IMAGE_NAME
+                  done
+    delete-untagged-images:
+        runs-on: ubuntu-latest
+        needs: build-push
+        strategy:
+            matrix:
+                package: [coloringbook-app, coloringbook-worker]
+        steps:
+            - name: Package/Container Cleanup action in ghcr.io for ${{ matrix.package }}
+              uses: dataaxiom/ghcr-cleanup-action@v1
+              with:
+                  package: ${{ matrix.package }}
+                  delete-untagged: true
+                  exclude-tags: v*
+                  keep-n-tagged: 3
+                  # dry-run: true
+                  # older-than: 1 year
